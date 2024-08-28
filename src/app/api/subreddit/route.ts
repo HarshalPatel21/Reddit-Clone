@@ -11,6 +11,8 @@ export async function POST(req: Request) {
             return new Response('Unauthorized', { status: 401 })
         }
         console.log("2");
+        // console.log("req", session);
+
         const body = await req.json()
         console.log("2.1");
         const { name } = Subredditvalidator.parse(body)

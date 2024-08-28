@@ -17,11 +17,7 @@ export const authOptions: NextAuthOptions = {
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-            authorization: {
-                params: {
-                    redirect_uri: 'http://localhost:3000/' // This should match your NextAuth callback URL
-                }
-            },
+
         }),
     ],
     callbacks: {
