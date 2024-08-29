@@ -4,9 +4,9 @@ export const Subredditvalidator = z.object({
     name: z.string().min(3).max(21),
 })
 
-export const Subredditsubscriptionvalidator = z.object({
+export const SubredditSubscriptionValidator = z.object({
     subredditId: z.string()
 })
 
 export type CreateSubredditPayload = z.infer<typeof Subredditvalidator>
-export type SubscribetoSubredditPayload = z.infer<typeof Subredditsubscriptionvalidator>
+export type SubscribeToSubredditPayload = z.infer<typeof SubredditSubscriptionValidator>

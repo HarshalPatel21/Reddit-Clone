@@ -8,14 +8,15 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Debug",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\src\\lib\\auth.ts",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
-            ]
+            ],
         }
+        
     ]
 }
