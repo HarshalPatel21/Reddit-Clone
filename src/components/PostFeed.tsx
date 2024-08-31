@@ -7,7 +7,8 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { INFINITE_SCROLL_PAGINATION_RESULTS } from "@/config";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import Post from "./Post";
+import Post from "./PostComp";
+import PostComp from "./PostComp";
 
 interface PostFeedProps {
   initialPosts: ExtendedPost[];
@@ -67,8 +68,9 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
         if (index === posts.length - 1) {
           return (
             <li key={post.id} ref={ref}>
-              <Post
+              <PostComp
                 post={post}
+                votesAmt={voteAmt}
                 subredditName={post.subreddit.name}
                 CommentAmt={post.comments.length}
               />
@@ -77,9 +79,9 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
         } else {
           return (
             // eslint-disable-next-line react/jsx-key
-            <Post
-            currentVote={currentVote}
-            votesAmt={voteAmt}
+            <PostComp
+              currentVote={currentVote}
+              votesAmt={voteAmt}
               post={post}
               subredditName={post.subreddit.name}
               CommentAmt={post.comments.length}
