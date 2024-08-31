@@ -72,6 +72,8 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
           return (
             // eslint-disable-next-line react/jsx-key
             <Post
+            currentVote={currentVote}
+            votesAmt={voteAmt}
               post={post}
               subredditName={post.subreddit.name}
               CommentAmt={post.comments.length}
