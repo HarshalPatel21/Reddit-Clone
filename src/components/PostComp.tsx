@@ -27,14 +27,12 @@ const PostComp: FC<PostProps> = ({
 }) => {
   const pRef = useRef<HTMLDivElement>(null);
 
-  console.log(votesAmt);
-
   return (
     <div className="rounded-md bg-white shadow">
       <div className="px-6 py-4 flex justify-between">
         <PostVoteClient
           initialVoteAmt={votesAmt}
-          postId={"post.id"}
+          postId={post.id}
           initialVote={currentVote?.type}
         />
 
