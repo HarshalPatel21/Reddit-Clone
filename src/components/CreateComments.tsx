@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/Button";
 import { toast } from "@/hooks/use-toast";
-import { CommentRequest } from "@/lib/validators/comments";
+import { CommentRequest } from "@/lib/validators/comment";
 import { useCustomToasts } from "@/hooks/use-custom-toasts";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";

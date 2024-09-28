@@ -27,6 +27,8 @@ const PostComp: FC<PostProps> = ({
 }) => {
   const pRef = useRef<HTMLDivElement>(null);
 
+  console.log(subredditName);
+
   return (
     <div className="rounded-md bg-white shadow">
       <div className="px-6 py-4 flex justify-between">
@@ -42,7 +44,7 @@ const PostComp: FC<PostProps> = ({
               <>
                 <a
                   className="underline text-zinc-900 text-sm underline-offset-2"
-                  href={`r/${subredditName}`}
+                  href={`/r/${subredditName}`}
                 >
                   r/{subredditName}
                 </a>
@@ -52,7 +54,7 @@ const PostComp: FC<PostProps> = ({
             <span>Posted by u/{post.author.name}</span>{" "}
             {formatTimeToNow(new Date(post.createdAt))}
           </div>
-          <a href={`r/${subredditName}/post/${post.id}`}>
+          <a href={`/r/${subredditName}/post/${post.id}`}>
             <h1 className="text-lg font-semibold py-2 leading-6 text-gray-900">
               {post.title}
             </h1>
@@ -72,7 +74,7 @@ const PostComp: FC<PostProps> = ({
       <div className="bg-gray-50 z-20 text-sm p-4 sm:p-6">
         <a
           className="w-fit flex items-center gap-2"
-          href={`r/${subredditName}/post/${post.id}`}
+          href={`/r/${subredditName}/post/${post.id}`}
         >
           <MessagesSquare className="h-4 w-4" />
           {CommentAmt} comments
