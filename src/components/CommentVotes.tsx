@@ -4,12 +4,14 @@ import { toast } from "@/hooks/use-toast";
 import { useCustomToasts } from "@/hooks/use-custom-toasts";
 import { cn } from "@/lib/utils";
 import { usePrevious } from "@mantine/hooks";
-import { CommentVote, VoteType } from "@prisma/client";
+import { CommentVote, VoteType } from "../../node_modules/.prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { ArrowBigDown, ArrowBigUp } from "lucide-react";
 import { FC, useState } from "react";
 import { CommentVoteRequest } from "@/lib/validators/vote";
+
+// const { CommentVote, VoteType } = require("@prisma/client");
 
 interface CommentVotesProps {
   commentId: string;
@@ -38,7 +40,7 @@ const CommentVotes: FC<CommentVotesProps> = ({
         commentId,
       };
 
-      await axios.patch("/api/subreddit/post/comment/vote", payload);
+      await axios.patch("/api/subreddit/post/comment/votes", payload);
     },
     onError: (err, voteType) => {
       if (voteType === "UP") setVotesAmt((prev) => prev - 1);

@@ -12,10 +12,10 @@ import { toast } from "@/hooks/use-toast";
 import { useCustomToasts } from "@/hooks/use-custom-toasts";
 import { ToastProvider } from "@/components/ui/Toast";
 
-const page:FC = () => {
+const Page = () => {
   const [input, setInput] = useState<string>("");
   const router = useRouter();
-  const {loginToast} = useCustomToasts()
+  const { loginToast } = useCustomToasts();
 
   const { mutate: createCommunity, isLoading } = useMutation({
     mutationFn: async () => {
@@ -25,40 +25,37 @@ const page:FC = () => {
       const { data } = await axios.post("/api/subreddit", payload);
       return data as string;
     },
-    onError:(err) =>{
-      if (err instanceof AxiosError){
-        if(err.response?.status === 409){
-          console.log("409");
+    onError: (err) => {
+      if (err instanceof AxiosError) {
+        if (err.response?.status === 409) {
           return toast({
-            title: 'Subreddit already exists.',
-            description:'Please choose a different subreddit name.',
-            variant:'destructive',
-          })
+            title: "Subreddit already exists.",
+            description: "Please choose a different subreddit name.",
+            variant: "destructive",
+          });
         }
-        if(err.response?.status === 422){
-          console.log("422");
+        if (err.response?.status === 422) {
           return toast({
-            title: 'Invalid Subreddit name.',
-            description:'Please choose a name between 3 and 21 charachters.',
-            variant:'destructive',
-          })
+            title: "Invalid Subreddit name.",
+            description: "Please choose a name between 3 and 21 charachters.",
+            variant: "destructive",
+          });
         }
-        if(err.response?.status === 401){
-          console.log("401");
-          return loginToast()
+        if (err.response?.status === 401) {
+          return loginToast();
         }
       }
       toast({
-        title:'There was an error',
-        description:'Could not create subreddit',
-        variant:'destructive',
-      })
+        title: "There was an error",
+        description: "Could not create subreddit",
+        variant: "destructive",
+      });
     },
-    onSuccess:(data)=>{
-      router.push(`r/${data}`)
-    }
+    onSuccess: (data) => {
+      router.push(`r/${data}`);
+    },
   });
-  
+
   return (
     <div className="container flex items-centre h-full max-w-3xl mx-auto">
       <div className="relative bg-white w-full h-fit p-4 rounded-lg space y-6">
@@ -100,4 +97,4 @@ const page:FC = () => {
     </div>
   );
 };
-export default page;
+export default Page;
