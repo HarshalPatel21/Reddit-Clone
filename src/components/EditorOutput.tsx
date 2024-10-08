@@ -21,6 +21,9 @@ const style = {
 };
 
 const renderers = {
+  paragraph: ({ data }: any) => (
+    <p style={style.paragraph}>{data.text}</p>
+  ),
   image: CustomImageRenderer,
   //   code: CustomCodeRenderer,
 };
