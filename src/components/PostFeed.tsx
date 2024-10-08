@@ -29,9 +29,9 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
       console.log("in post feed");
 
       const query = `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}`;
-      console.log("query ::: " ,query);
+      console.log("query ::: ", query);
       const response = await fetch(query);
-      console.log("response ::: " ,response);
+      console.log("response ::: ", response);
       return response.json();
     },
     getNextPageParam: (lastPage) => lastPage.nextPage ?? false,

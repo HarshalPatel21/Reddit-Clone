@@ -1,4 +1,3 @@
-
 // components/LoggedInFeed.tsx
 import CustomFeed from "@/components/CustomFeed";
 import GeneralFeed from "@/components/GeneralFeed";
