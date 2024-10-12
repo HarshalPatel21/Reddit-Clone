@@ -60,18 +60,18 @@ const Page = () => {
     <div className="container flex items-centre h-full max-w-3xl mx-auto">
       <div className="relative bg-white w-full h-fit p-4 rounded-lg space y-6">
         <div className="flex-justify-between itms-center">
-          <h1 className="text-x1 font-semibold">Create a community</h1>
+          <h1 className="text-xl font-semibold">Create a community</h1>
         </div>
 
         <hr className="bg-zinc-500 h-px" />
 
         <div>
           <p className="text-lg font-medium">Name</p>
-          <p className="text-xs pb-2">
-            comunity name including captialization can not be changed.x
+          <p className="text-sm pb-2">
+            comunity name including captialization can not be changed.
           </p>
           <div className="relative">
-            <p className="absolute text-sm left-0 w-8 inset-y-0 grid place-item-centre text-zinc-400">
+            <p className="absolute text-sm left-1 mt-2 w-8 inset-y-0 grid place-item-centre text-zinc-400">
               r/
             </p>
           </div>
@@ -81,7 +81,7 @@ const Page = () => {
             className="p1-6"
           ></Input>
         </div>
-        <div className="flex justify-end gap-4">
+        <div className="flex justify-end gap-4 mt-5">
           <Button variant="subtle" onClick={() => router.back()}>
             Cancel
           </Button>

@@ -113,6 +113,9 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
                       console.log("Upload started for file:", file);
                     },
                   });
+
+                  console.log("res ::: ", res);
+
                   return {
                     success: 1,
                     file: {
