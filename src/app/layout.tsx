@@ -25,10 +25,10 @@ export default function RootLayout({
       lang="en"
       className={cn(
         "bg-white text-slate-900 antialiased light",
-        inter.className
+        inter.className || "font-sans"
       )}
     >
-      <body className="min-h-screen pt-12 bg-slate-50 antialiased">
+      <body className="min-h-screen pt-12 bg-slate-50 antialiased vsc-initialized">
         <Providers>
           {/* @ts-expect-error Server Component */}
           <Navbar />

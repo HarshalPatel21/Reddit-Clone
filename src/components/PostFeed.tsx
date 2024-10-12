@@ -26,16 +26,20 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
   const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ["infinite-query"],
     queryFn: async ({ pageParam = 1 }) => {
-      console.log("in post feed");
+      const query =
+        `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}` +
+        (!!subredditName ? `&subredditName=${subredditName}` : "");
 
-      const query = `/api/posts?limit=${INFINITE_SCROLL_PAGINATION_RESULTS}&page=${pageParam}`;
-      console.log("query ::: ", query);
-      const response = await fetch(query);
-      console.log("response ::: ", response);
-      return response.json();
+      const { data } = await axios.get(query);
+      return data as ExtendedPost[];
+      // const response = await fetch(query);
+      // return response.json();
     },
-    getNextPageParam: (lastPage) => lastPage.nextPage ?? false,
-    initialPageParam: 1,
+    getNextPageParam: (_, pages) => {
+      // lastPage.nextPage ?? false
+      return pages.length + 1;
+    },
+    initialData: { pages: [initialPosts], pageParams: [1] },
   });
 
   useEffect(() => {
@@ -65,7 +69,7 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
             <li key={post.id} ref={ref}>
               <Post
                 post={post}
-                commentAmt={post.comments.length}
+                CommentAmt={post.comments.length}
                 subredditName={post.subreddit.name}
                 votesAmt={votesAmt}
                 currentVote={currentVote}
@@ -77,7 +81,7 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
             <Post
               key={post.id}
               post={post}
-              commentAmt={post.comments.length}
+              CommentAmt={post.comments.length}
               subredditName={post.subreddit.name}
               votesAmt={votesAmt}
               currentVote={currentVote}

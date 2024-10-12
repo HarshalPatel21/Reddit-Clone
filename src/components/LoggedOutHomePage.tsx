@@ -56,7 +56,7 @@ const LoggedOutHomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="layout-container">
       <div className="slider-container">
         <div className="slide">
           <h2>{slides[currentSlide].title}</h2>

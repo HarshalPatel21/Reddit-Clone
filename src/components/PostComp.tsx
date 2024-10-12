@@ -27,7 +27,7 @@ const PostComp: FC<PostProps> = ({
 }) => {
   const pRef = useRef<HTMLDivElement>(null);
 
-  console.log(subredditName);
+  // console.log(subredditName);
 
   return (
     <div className="rounded-md bg-white shadow">
