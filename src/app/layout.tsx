@@ -28,7 +28,7 @@ export default function RootLayout({
         inter.className || "font-sans"
       )}
     >
-      <body className="min-h-screen pt-12 bg-slate-50 antialiased vsc-initialized">
+      <body className="min-h-screen pt-12  antialiased vsc-initialized bg-emerald-100">
         <Providers>
           {/* @ts-expect-error Server Component */}
           <Navbar />
